@@ -1,0 +1,65 @@
+/\* =========================================================================
+ATMOSPHERE WEATHER DASHBOARD - STYLESHEET (style.css)
+Lighter, beautifully blended seasonal & weather color matrices.
+========================================================================= \*/
+
+:root {
+\--card-bg: rgba(255, 255, 255, 0.75);
+\--accent-border: rgba(210, 225, 240, 0.8);
+\--accent-glow: #3494B7;
+}
+
+body {
+font-family: 'Space Grotesk', 'Inter', sans-serif;
+transition: background 0.8s ease, color 0.5s ease;
+overflow-x: hidden;
+background-color: #f1f5f9;
+}
+
+/\* Sharp Glass Cards with custom outlines & semi-transparent panels */
+.sharp-card {
+background: var(--card-bg);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border: 1.5px solid var(--accent-border);
+border-radius: 12px; /* Sharper corners as requested \*/
+box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sharp-card:hover {
+box-shadow: 0 14px 30px -5px rgba(0, 0, 0, 0.12);
+}
+
+/\* Custom Scrollbar for 24-Hour Slider \*/
+.custom-scroll::-webkit-scrollbar {
+height: 6px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+background: rgba(0, 0, 0, 0.05);
+border-radius: 4px;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+background: var(--accent-border);
+border-radius: 4px;
+}
+
+/\* Hour pill styling for 24-hour horizontal view \*/
+.hour-pill {
+border: 1.5px solid rgba(0, 0, 0, 0.1);
+background: rgba(255, 255, 255, 0.6);
+border-radius: 8px;
+transition: all 0.2s ease;
+min-width: 58px;
+}
+.hour-pill:hover {
+background: rgba(255, 255, 255, 0.9);
+}
+.hour-pill.active {
+border-color: var(--accent-glow);
+background: var(--accent-glow);
+color: #ffffff;
+font-weight: 700;
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
