@@ -1,0 +1,227 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Weather Dashboard</title>
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Dynamic Theme Container -->
+    <div id="app-container" class="app-container theme-sunny">
+        
+        <!-- Animated Background Scene -->
+        <div class="bg-scene" id="bg-scene">
+            <div class="sky-elements" id="sky-elements"></div>
+            <div class="landscape-backdrop"></div>
+        </div>
+
+        <!-- Main Dashboard Layout -->
+        <div class="dashboard-wrapper">
+            
+            <!-- Top Navigation & Location Search -->
+            <header class="app-header">
+                <div class="header-brand">
+                    <span class="brand-icon">🌤️</span>
+                    <h1>SkyStyle Dashboard</h1>
+                </div>
+
+                <div class="search-bar-container">
+                    <div class="search-input-wrapper">
+                        <span class="search-icon">🔍</span>
+                        <select id="location-select" aria-label="Select Location">
+                            <!-- Populated dynamically via JS -->
+                        </select>
+                    </div>
+
+                    <div class="unit-toggle" id="unit-toggle">
+                        <button class="unit-btn active" data-unit="F">°F</button>
+                        <button class="unit-btn" data-unit="C">°C</button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content Grid -->
+            <main class="dashboard-content">
+
+                <!-- Primary At-A-Glance Weather Card -->
+                <section class="card primary-card" id="primary-card">
+                    <div class="card-header-meta">
+                        <div class="location-badge">
+                            <span class="location-pin">📍</span>
+                            <span id="current-location-name">New York, NY</span>
+                            <span class="data-source-tag" title="Data sourced from NWS / AccuWeather composite models">Verified Source</span>
+                        </div>
+                        <div id="current-date-time" class="date-time">Friday, Oct 23 • 2:00 PM</div>
+                    </div>
+
+                    <div class="weather-hero">
+                        <div class="hero-temp-group">
+                            <div class="main-temperature">
+                                <span id="hero-temp">64</span><span class="deg-symbol">°</span>
+                            </div>
+                            <div class="hero-sub-stats">
+                                <div class="real-feel-badge">
+                                    RealFeel® <strong id="hero-realfeel">62°</strong>
+                                </div>
+                                <div class="high-low-range">
+                                    H: <span id="hero-high">68°</span> • L: <span id="hero-low">48°</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hero-condition-group">
+                            <div class="condition-art" id="hero-condition-art">
+                                <!-- Dynamic SVG / Canvas Artwork injected via JS -->
+                            </div>
+                            <div class="condition-text-box">
+                                <h2 id="hero-condition-title">Breezy & Mild</h2>
+                                <p id="hero-condition-sub">Partly cloudy with pleasant afternoon warmth</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instant Metrics Bar -->
+                    <div class="quick-metrics-grid">
+                        <div class="metric-chip">
+                            <span class="chip-icon">💨</span>
+                            <div class="chip-data">
+                                <span class="chip-label">Wind Speed</span>
+                                <span class="chip-value" id="metric-wind">12 mph NW</span>
+                            </div>
+                        </div>
+                        <div class="metric-chip">
+                            <span class="chip-icon">💧</span>
+                            <div class="chip-data">
+                                <span class="chip-label">Humidity</span>
+                                <span class="chip-value" id="metric-humidity">45%</span>
+                            </div>
+                        </div>
+                        <div class="metric-chip">
+                            <span class="chip-icon">☔</span>
+                            <div class="chip-data">
+                                <span class="chip-label">Precipitation</span>
+                                <span class="chip-value" id="metric-precip">5%</span>
+                            </div>
+                        </div>
+                        <div class="metric-chip">
+                            <span class="chip-icon">☀️</span>
+                            <div class="chip-data">
+                                <span class="chip-label">UV Index</span>
+                                <span class="chip-value" id="metric-uv">4 (Moderate)</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Outfits & Clothing Recommendation Card -->
+                <section class="card outfit-card" id="outfit-card">
+                    <div class="card-title-row">
+                        <div class="title-with-icon">
+                            <span class="section-icon">🧥</span>
+                            <h3>What To Wear Today</h3>
+                        </div>
+                        <span class="smart-tag">Smart Assistant</span>
+                    </div>
+
+                    <div class="outfit-narrative-box">
+                        <div class="narrative-quote-icon">“</div>
+                        <p id="outfit-narrative-text">
+                            Today will be a cool fall day with a slight breeze in the air, but a high of 68° around 3pm. You should layer with a light jacket over either a T-shirt or light sweater. I suggest jeans or leggings. No rain today so there shouldn't be a need for a raincoat or umbrella!
+                        </p>
+                    </div>
+
+                    <!-- Recommended Items Checklist -->
+                    <div class="clothing-checklist-section">
+                        <h4>Suggested Wardrobe Items</h4>
+                        <div class="clothing-tags-grid" id="clothing-tags-grid">
+                            <!-- Injected dynamically by Script -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hourly Breakdown Selector & Detail Card -->
+                <section class="card hourly-card" id="hourly-card">
+                    <div class="card-title-row">
+                        <div class="title-with-icon">
+                            <span class="section-icon">⏰</span>
+                            <h3>Hourly Forecast & RealFeel®</h3>
+                        </div>
+                        <span class="hint-text">Click an hour to inspect</span>
+                    </div>
+
+                    <!-- Horizontal Scrollable Hours Selector -->
+                    <div class="hourly-timeline-scroll" id="hourly-timeline">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <!-- Detailed Inspector for Selected Hour -->
+                    <div class="hourly-inspector" id="hourly-inspector">
+                        <div class="inspector-header">
+                            <span class="inspector-time" id="inspector-time">Selected Hour: 1:00 PM</span>
+                            <span class="inspector-condition" id="inspector-condition">Partly Cloudy</span>
+                        </div>
+
+                        <div class="inspector-details-grid">
+                            <div class="inspector-item">
+                                <span class="item-label">Actual Temp</span>
+                                <span class="item-value" id="inspect-temp">64°</span>
+                            </div>
+                            <div class="inspector-item highlight">
+                                <span class="item-label">RealFeel® Temp</span>
+                                <span class="item-value" id="inspect-realfeel">62°</span>
+                            </div>
+                            <div class="inspector-item">
+                                <span class="item-label">Wind & Gusts</span>
+                                <span class="item-value" id="inspect-wind">11 mph (Gusts 16)</span>
+                            </div>
+                            <div class="inspector-item">
+                                <span class="item-label">Rain Chance</span>
+                                <span class="item-value" id="inspect-pop">10%</span>
+                            </div>
+                            <div class="inspector-item">
+                                <span class="item-label">Humidity</span>
+                                <span class="item-value" id="inspect-humidity">42%</span>
+                            </div>
+                            <div class="inspector-item">
+                                <span class="item-label">Dew Point</span>
+                                <span class="item-value" id="inspect-dew">41°</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Weekly Forecast Card -->
+                <section class="card weekly-card" id="weekly-card">
+                    <div class="card-title-row">
+                        <div class="title-with-icon">
+                            <span class="section-icon">📅</span>
+                            <h3>7-Day Forecast Overview</h3>
+                        </div>
+                        <span class="data-provider">Source: NWS / AccuWeather</span>
+                    </div>
+
+                    <div class="weekly-list" id="weekly-list">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Footer & Source attributions -->
+            <footer class="app-footer">
+                <p>SkyStyle Dashboard • Weather data aggregated from National Weather Service, AccuWeather & The Weather Channel reference models.</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
