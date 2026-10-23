@@ -1,8 +1,4 @@
 /* style.css */
-
-/* ==========================================================================
-   1. BASE STYLES & RESET
-   ========================================================================== */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -15,8 +11,7 @@
     --border-radius-lg: 24px;
     --border-radius-md: 16px;
     --border-radius-sm: 10px;
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
-    --shadow-card: 0 12px 32px rgba(0, 0, 0, 0.06);
+    --shadow-card: 0 12px 32px rgba(0, 0, 0, 0.08);
 }
 
 body {
@@ -24,61 +19,49 @@ body {
     background-color: #0f172a;
     color: #1e293b;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0;
-    overflow-x: hidden;
 }
 
-/* ==========================================================================
-   2. DYNAMIC THEME SYSTEM & BACKGROUND ILLUSTRATIONS
-   ========================================================================== */
+/* Dynamic Themes */
 .app-container {
     width: 100%;
     min-height: 100vh;
     position: relative;
-    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
-    overflow: hidden;
+    transition: background var(--transition-speed) ease;
+    overflow-x: hidden;
 }
 
-/* Theme: Sunny / Clear Day */
 .theme-sunny {
-    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
-    --card-bg: rgba(255, 255, 255, 0.82);
-    --card-border: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #38bdf8 100%);
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-border: rgba(255, 255, 255, 0.95);
     --text-main: #0c4a6e;
     --text-muted: #0369a1;
     --accent-color: #0284c7;
-    --chip-bg: rgba(255, 255, 255, 0.65);
-    --hero-sun-color: #f59e0b;
+    --chip-bg: rgba(255, 255, 255, 0.7);
 }
 
-/* Theme: Breezy / Cool Fall */
 .theme-breezy {
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 40%, #e0f2fe 100%);
-    --card-bg: rgba(255, 255, 255, 0.85);
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #7dd3fc 100%);
+    --card-bg: rgba(255, 255, 255, 0.88);
     --card-border: rgba(255, 255, 255, 0.95);
     --text-main: #78350f;
     --text-muted: #b45309;
     --accent-color: #d97706;
-    --chip-bg: rgba(255, 255, 255, 0.7);
+    --chip-bg: rgba(255, 255, 255, 0.75);
 }
 
-/* Theme: Rainy / Showers */
 .theme-rainy {
-    background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 50%, #64748b 100%);
-    --card-bg: rgba(255, 255, 255, 0.88);
-    --card-border: rgba(255, 255, 255, 0.7);
+    background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 50%, #475569 100%);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --card-border: rgba(255, 255, 255, 0.8);
     --text-main: #0f172a;
     --text-muted: #334155;
     --accent-color: #2563eb;
-    --chip-bg: rgba(241, 245, 249, 0.8);
+    --chip-bg: rgba(241, 245, 249, 0.85);
 }
 
-/* Theme: Snow / Ice */
 .theme-snowy {
-    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%);
     --card-bg: rgba(255, 255, 255, 0.92);
     --card-border: rgba(255, 255, 255, 1);
     --text-main: #1e293b;
@@ -87,29 +70,27 @@ body {
     --chip-bg: rgba(255, 255, 255, 0.85);
 }
 
-/* Theme: Thunderstorm */
+.theme-freezing {
+    background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 50%, #3b82f6 100%);
+    --card-bg: rgba(255, 255, 255, 0.92);
+    --card-border: rgba(255, 255, 255, 1);
+    --text-main: #1e3a8a;
+    --text-muted: #1d4ed8;
+    --accent-color: #2563eb;
+    --chip-bg: rgba(255, 255, 255, 0.85);
+}
+
 .theme-thunder {
     background: linear-gradient(135deg, #334155 0%, #1e293b 60%, #0f172a 100%);
-    --card-bg: rgba(30, 41, 59, 0.85);
+    --card-bg: rgba(30, 41, 59, 0.88);
     --card-border: rgba(255, 255, 255, 0.15);
     --text-main: #f8fafc;
     --text-muted: #cbd5e1;
     --accent-color: #38bdf8;
-    --chip-bg: rgba(15, 23, 42, 0.6);
+    --chip-bg: rgba(15, 23, 42, 0.65);
 }
 
-/* Theme: Overcast / Cloudy */
-.theme-cloudy {
-    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-    --card-bg: rgba(255, 255, 255, 0.85);
-    --card-border: rgba(255, 255, 255, 0.9);
-    --text-main: #1e293b;
-    --text-muted: #475569;
-    --accent-color: #475569;
-    --chip-bg: rgba(255, 255, 255, 0.75);
-}
-
-/* Background Scene Overlay (Sun Rays, Raindrops, Clouds) */
+/* Background Scene */
 .bg-scene {
     position: absolute;
     top: 0;
@@ -127,64 +108,26 @@ body {
     height: 100%;
 }
 
-/* Sun animation for sunny weather */
 .cartoon-sun {
     position: absolute;
     top: 30px;
     right: 5%;
-    width: 160px;
-    height: 160px;
+    width: 140px;
+    height: 140px;
     background: radial-gradient(circle, #fbbf24 0%, #f59e0b 70%);
     border-radius: 50%;
-    box-shadow: 0 0 50px rgba(245, 158, 11, 0.5);
-    animation: pulseSun 6s infinite alternate ease-in-out;
+    box-shadow: 0 0 40px rgba(245, 158, 11, 0.5);
 }
 
-.cartoon-sun::after {
-    content: '';
-    position: absolute;
-    inset: -15px;
-    border: 6px dashed rgba(251, 191, 36, 0.6);
-    border-radius: 50%;
-    animation: spinSun 25s linear infinite;
-}
-
-@keyframes spinSun {
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes pulseSun {
-    0% { transform: scale(0.95); box-shadow: 0 0 30px rgba(245, 158, 11, 0.4); }
-    100% { transform: scale(1.05); box-shadow: 0 0 70px rgba(245, 158, 11, 0.7); }
-}
-
-/* Floating cartoon clouds */
-.cartoon-cloud {
-    position: absolute;
-    background: #ffffff;
-    border-radius: 50px;
-    opacity: 0.85;
-    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.05));
-    animation: floatCloud linear infinite;
-}
-
-@keyframes floatCloud {
-    0% { transform: translateX(-200px); }
-    100% { transform: translateX(105vw); }
-}
-
-/* ==========================================================================
-   3. LAYOUT & CONTAINER STRUCTURE
-   ========================================================================== */
+/* Layout & Grid */
 .dashboard-wrapper {
     position: relative;
     z-index: 1;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 24px 20px 40px 20px;
 }
 
-/* Navigation Header */
 .app-header {
     display: flex;
     justify-content: space-between;
@@ -204,14 +147,12 @@ body {
     font-size: 1.5rem;
     font-weight: 800;
     color: var(--text-main);
-    letter-spacing: -0.02em;
 }
 
 .brand-icon {
     font-size: 1.8rem;
 }
 
-/* Search Bar & Unit Selector */
 .search-bar-container {
     display: flex;
     align-items: center;
@@ -219,7 +160,6 @@ body {
 }
 
 .search-input-wrapper {
-    position: relative;
     display: flex;
     align-items: center;
     background: var(--card-bg);
@@ -227,12 +167,11 @@ body {
     backdrop-filter: blur(12px);
     border-radius: 30px;
     padding: 8px 16px;
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-card);
 }
 
 .search-icon {
     margin-right: 8px;
-    font-size: 0.9rem;
 }
 
 #location-select {
@@ -244,10 +183,8 @@ body {
     color: var(--text-main);
     outline: none;
     cursor: pointer;
-    padding-right: 8px;
 }
 
-/* Unit Toggle Switch */
 .unit-toggle {
     display: flex;
     background: var(--card-bg);
@@ -255,7 +192,7 @@ body {
     backdrop-filter: blur(12px);
     border-radius: 30px;
     padding: 3px;
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-card);
 }
 
 .unit-btn {
@@ -274,12 +211,9 @@ body {
 .unit-btn.active {
     background: var(--accent-color);
     color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* ==========================================================================
-   4. CARDS & GRID SYSTEM
-   ========================================================================== */
+/* Dashboard Content Grid - Balanced 2-column & 12-col layout for Desktop */
 .dashboard-content {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -290,11 +224,9 @@ body {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
     border-radius: var(--border-radius-lg);
     padding: 24px;
     box-shadow: var(--shadow-card);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card-title-row {
@@ -324,7 +256,6 @@ body {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
     padding: 4px 10px;
     border-radius: 12px;
     background: rgba(0, 0, 0, 0.05);
@@ -337,9 +268,7 @@ body {
     font-weight: 500;
 }
 
-/* ==========================================================================
-   5. PRIMARY WEATHER CARD (HERO)
-   ========================================================================== */
+/* Primary Card */
 .primary-card {
     grid-column: span 12;
     display: flex;
@@ -399,7 +328,6 @@ body {
     font-weight: 800;
     line-height: 0.9;
     color: var(--text-main);
-    letter-spacing: -0.04em;
 }
 
 .deg-symbol {
@@ -436,11 +364,6 @@ body {
 }
 
 .condition-art {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 3.5rem;
 }
 
@@ -448,7 +371,6 @@ body {
     font-size: 1.6rem;
     font-weight: 800;
     color: var(--text-main);
-    line-height: 1.2;
 }
 
 .condition-text-box p {
@@ -458,12 +380,10 @@ body {
     margin-top: 2px;
 }
 
-/* Quick Metrics Strip */
 .quick-metrics-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 12px;
-    margin-top: 10px;
 }
 
 .metric-chip {
@@ -495,32 +415,19 @@ body {
     font-size: 0.95rem;
     font-weight: 700;
     color: var(--text-main);
+}
 
-/* ==========================================================================
-   6. OUTFIT & RECOMMENDATIONS CARD
-   ========================================================================== */
+/* Outfit Card & Hourly/Weekly Cards configured for clean 2-column desktop split or stacked */
 .outfit-card {
     grid-column: span 12;
-    background: var(--card-bg);
 }
 
 .outfit-narrative-box {
-    position: relative;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
     border-left: 4px solid var(--accent-color);
     border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
-    padding: 16px 20px 16px 40px;
+    padding: 16px 20px;
     margin-bottom: 20px;
-}
-
-.narrative-quote-icon {
-    position: absolute;
-    top: -5px;
-    left: 12px;
-    font-size: 2.2rem;
-    font-family: Georgia, serif;
-    color: var(--accent-color);
-    opacity: 0.5;
 }
 
 #outfit-narrative-text {
@@ -536,7 +443,6 @@ body {
     text-transform: uppercase;
     color: var(--text-muted);
     margin-bottom: 12px;
-    letter-spacing: 0.03em;
 }
 
 .clothing-tags-grid {
@@ -556,23 +462,22 @@ body {
     font-size: 0.88rem;
     font-weight: 700;
     color: var(--text-main);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-    transition: transform 0.15s ease;
 }
 
-.clothing-tag:hover {
-    transform: translateY(-2px);
-}
-
-.tag-icon {
-    font-size: 1.1rem;
-}
-
-/* ==========================================================================
-   7. HOURLY FORECAST CARD & INSPECTOR
-   ========================================================================== */
+/* Hourly Card & Sparkline */
 .hourly-card {
     grid-column: span 12;
+}
+
+.hourly-sparkline-container {
+    width: 100%;
+    height: 70px;
+    margin-bottom: 14px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
 }
 
 .hourly-timeline-scroll {
@@ -581,17 +486,6 @@ body {
     overflow-x: auto;
     padding-bottom: 12px;
     margin-bottom: 20px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent-color) transparent;
-}
-
-.hourly-timeline-scroll::-webkit-scrollbar {
-    height: 6px;
-}
-
-.hourly-timeline-scroll::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.2);
-    border-radius: 10px;
 }
 
 .hour-pill {
@@ -610,8 +504,7 @@ body {
 }
 
 .hour-pill:hover {
-    transform: translateY(-3px);
-    border-color: rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
 }
 
 .hour-pill.active {
@@ -628,7 +521,6 @@ body {
 
 .hour-pill .pill-icon {
     font-size: 1.5rem;
-    margin: 2px 0;
 }
 
 .hour-pill .pill-temp {
@@ -643,7 +535,6 @@ body {
     color: #2563eb;
 }
 
-/* Inspector Details Area */
 .hourly-inspector {
     background: rgba(255, 255, 255, 0.6);
     border-radius: var(--border-radius-md);
@@ -705,9 +596,7 @@ body {
     margin-top: 2px;
 }
 
-/* ==========================================================================
-   8. WEEKLY FORECAST CARD
-   ========================================================================== */
+/* Weekly Card */
 .weekly-card {
     grid-column: span 12;
 }
@@ -725,18 +614,13 @@ body {
     background: var(--chip-bg);
     border-radius: var(--border-radius-md);
     padding: 12px 18px;
-    transition: background 0.2s ease;
-}
-
-.weekly-row:hover {
-    background: rgba(255, 255, 255, 0.9);
 }
 
 .weekly-day-group {
     display: flex;
     align-items: center;
     gap: 14px;
-    width: 180px;
+    width: 140px;
 }
 
 .weekly-day-name {
@@ -761,7 +645,7 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    width: 200px;
+    width: 180px;
 }
 
 .temp-low {
@@ -785,7 +669,6 @@ body {
     background: rgba(0,0,0,0.1);
     border-radius: 3px;
     position: relative;
-    overflow: hidden;
 }
 
 .temp-bar-fill {
@@ -795,9 +678,6 @@ body {
     border-radius: 3px;
 }
 
-/* ==========================================================================
-   9. FOOTER
-   ========================================================================== */
 .app-footer {
     text-align: center;
     margin-top: 32px;
@@ -807,55 +687,15 @@ body {
     color: var(--text-muted);
 }
 
-/* ==========================================================================
-   10. MOBILE & RESPONSIVE BREAKPOINTS
-   ========================================================================== */
-@media (max-width: 768px) {
-    .dashboard-wrapper {
-        padding: 16px 12px 30px 12px;
+/* Desktop screen layout polish */
+@media (min-width: 900px) {
+    .outfit-card {
+        grid-column: span 6;
     }
-
-    .app-header {
-        flex-direction: column;
-        align-items: stretch;
+    .hourly-card {
+        grid-column: span 6;
     }
-
-    .search-bar-container {
-        justify-content: space-between;
-    }
-
-    .search-input-wrapper {
-        flex: 1;
-    }
-
-    .main-temperature {
-        font-size: 3.8rem;
-    }
-
-    .weather-hero {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .hero-condition-group {
-        width: 100%;
-        padding-top: 10px;
-        border-top: 1px dashed rgba(0, 0, 0, 0.1);
-    }
-
-    .weekly-day-group {
-        width: 120px;
-    }
-
-    .weekly-condition-text {
-        display: none; /* Hide long text on mobile for clean look */
-    }
-
-    .weekly-temp-bar-container {
-        width: 160px;
-    }
-
-    .outfit-narrative-box {
-        padding: 14px 14px 14px 32px;
+    .weekly-card {
+        grid-column: span 12;
     }
 }
