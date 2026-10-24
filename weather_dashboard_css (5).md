@@ -1,0 +1,68 @@
+/\* =========================================================================
+ATMOSPHERE WEATHER DASHBOARD - STYLESHEET (style.css)
+Pastel-blended gradients and subtle colored border outlines.
+========================================================================= \*/
+
+:root {
+\--bg-gradient: linear-gradient(135deg, #FFF6ED 0%, #FEF9C3 40%, #FFEDD5 100%);
+\--card-bg: rgba(255, 255, 255, 0.78);
+\--card-border: #FBBF24;
+\--accent-glow: #F59E0B;
+}
+
+body {
+font-family: 'Space Grotesk', 'Inter', sans-serif;
+transition: background 0.8s ease, color 0.5s ease;
+overflow-x: hidden;
+background: var(--bg-gradient);
+min-height: 100vh;
+}
+
+/\* Sharp glass cards with clean colored outlines \*/
+.sharp-card {
+background: var(--card-bg);
+backdrop-filter: blur(12px);
+\-webkit-backdrop-filter: blur(12px);
+border: 1.5px solid var(--card-border);
+border-radius: 12px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sharp-card:hover {
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/\* Custom scrollbar for horizontal containers & chat \*/
+.custom-scroll::-webkit-scrollbar {
+height: 6px;
+width: 6px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+background: rgba(0, 0, 0, 0.03);
+border-radius: 4px;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+background: var(--card-border);
+border-radius: 4px;
+}
+
+/\* Hour pill styling \*/
+.hour-pill {
+border: 1.5px solid rgba(0, 0, 0, 0.08);
+background: rgba(255, 255, 255, 0.65);
+border-radius: 8px;
+transition: all 0.2s ease;
+min-width: 58px;
+}
+.hour-pill:hover {
+background: rgba(255, 255, 255, 0.9);
+}
+.hour-pill.active {
+border-color: var(--accent-glow);
+background: var(--accent-glow);
+color: #ffffff;
+font-weight: 700;
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
